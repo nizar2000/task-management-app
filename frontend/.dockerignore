@@ -1,0 +1,35 @@
+# Ignore dependencies
+/vendor
+/node_modules
+
+# Ignore environment and configuration files
+.env
+.env.*
+.env.local
+
+# Ignore logs and caches
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+
+# Ignore build and IDE files
+.DS_Store
+.vscode
+.idea
+.git
+*.log
+npm-debug.log
+yarn.lock
+package-lock.json
+
+# Ignore compiled assets
+public/hot
+public/storage
+public/mix-manifest.json
+public/css
+public/js
+
+# Ignore test and documentation files
+tests
+README.md

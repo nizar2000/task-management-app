@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.next
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.laravel
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: backend
+      DB_USERNAME: root
+      DB_PASSWORD:   # Ensure this matches the MYSQL_ROOT_PASSWORD in the db service
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: your_strong_password  # Set a strong password
+      MYSQL_DATABASE: backend
+    
+        # Match this with DB_PASSWORD if used
+    ports:
+      - "3306:3306"
