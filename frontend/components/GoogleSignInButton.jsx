@@ -21,12 +21,12 @@ const GoogleLoginButton = () => {
     };
 
     return (
-        <GoogleOAuthProvider clientId="52875933283-0u153opf9eb4hcl0rdmbv82lua3q1u3d.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
             <GoogleLogin
                 onSuccess={handleSuccess}
-                onFailure={handleError}
+                onError={handleError}
             />
-        </GoogleOAuthProvider>
+        </GoogleOAuthProvider
     );
 };
 
